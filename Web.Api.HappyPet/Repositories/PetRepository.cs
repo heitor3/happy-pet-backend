@@ -32,6 +32,7 @@ namespace Web.Api.HappyPet.Repositories
             return _appDbContext.Pet
                 .Include(x => x.Especie)
                 .Include(x => x.Porte)
+                .Include(x => x.Usuario)
                 .FirstOrDefault(x => x.PetId == id);
         }
 

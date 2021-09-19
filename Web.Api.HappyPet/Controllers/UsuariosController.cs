@@ -22,10 +22,10 @@ namespace Web.Api.HappyPet.Controllers
 
         [Route("Login")]
         [HttpPost]
-        public IActionResult Login([FromBody] string email, string senha)
+        public IActionResult Login([FromBody] Usuario usuario)
         {
 
-            var user = _repository.Login(email, senha);
+            var user = _repository.Login(usuario.Email, usuario.Senha);
 
             if (user == null)
             {
