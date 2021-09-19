@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Api.HappyPet.Context;
+using Web.Api.HappyPet.Repositories;
 
 namespace Web.Api.HappyPet
 {
@@ -30,6 +31,9 @@ namespace Web.Api.HappyPet
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<IPet, PetRepository>();
+            services.AddTransient<IUsuario, UsuarioRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

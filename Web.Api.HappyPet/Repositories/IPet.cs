@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Web.Api.HappyPet.Models;
 
 namespace Web.Api.HappyPet.Repositories
@@ -12,9 +9,12 @@ namespace Web.Api.HappyPet.Repositories
 
         void Delete(int id);
 
+        Pet Details(int id);
+
         IEnumerable<Pet> List();
 
         IEnumerable<Pet> ListById(int id);
+
 
     }
 }

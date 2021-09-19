@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Web.Api.HappyPet.Context;
 using Web.Api.HappyPet.Models;
 
@@ -27,6 +25,14 @@ namespace Web.Api.HappyPet.Repositories
             var pet = _appDbContext.Pet.FirstOrDefault(x => x.PetId == id);
             _appDbContext.Set<Pet>().Remove(pet);
             _appDbContext.SaveChanges();
+        }
+
+        public Pet Details(int id)
+        {
+            return _appDbContext.Pet
+                .Include(x => x.Especie)
+                .Include(x => x.Porte)
+                .FirstOrDefault(x => x.PetId == id);
         }
 
         public IEnumerable<Pet> List()
